@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fa">
+  <title>Interview review | HR workspace</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="assessment-history.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="HR workspace home"><span class="brand-mark">H</span><span>People<span class="brand-muted"> / Hiring</span></span></a>
+    <div class="topbar-right"><span class="synthetic-tag"><span></span> Synthetic demo data</span><span class="avatar">HR</span></div>
+  </header>
+
+  <main class="page-shell">
+    <div class="page-heading">
+      <div><div class="eyebrow">RECRUITING OPERATIONS <span>/</span> REVIEW QUEUE</div><h1>Interview review</h1><p class="page-intro">Review one response against the shared rubric. Your score stays yours; the reference score appears after you submit.</p></div>
+      <div class="queue-count"><span class="count-number" id="queue-count">—</span><span>responses in this export</span></div>
+    </div>
+
+    <div class="notice" role="note"><span class="notice-icon">i</span><div><strong>HR makes the decision</strong><span>Optional AI assessments are advisory. Submit your own score and rationale; this dashboard does not make candidate advancement decisions.</span></div></div>
+
+    <section class="workspace" aria-label="Interview review workspace">
+      <aside class="queue-panel panel">
+        <div class="panel-head queue-head"><div><h2>Responses</h2><p id="queue-subtitle">Loading answers…</p></div><span class="filter-icon" aria-hidden="true">☷</span></div>
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search candidate or question" aria-label="Search answers"></label>
+        <div class="filter-row"><label for="availability-filter">Availability</label><select id="availability-filter"><option value="all">All responses</option><option value="transcript">Transcript available</option><option value="audio">Audio only</option><option value="missing">Missing response</option></select></div>
+        <div class="answer-list" id="answer-list" aria-label="Answers" role="listbox"></div>
+        <div class="list-foot" id="list-foot"></div>
+      </aside>
+
+      <section class="review-column" aria-label="Selected answer review">
+        <article class="panel answer-panel">
+          <div class="panel-head answer-head"><div><div class="eyebrow">SELECTED RESPONSE</div><h2 id="answer-title">Choose a response</h2><p id="answer-meta" class="muted"></p></div><div id="availability-badge"></div></div>
+          <div id="answer-content" class="answer-content"><div class="empty-state"><span class="empty-icon">↖</span><h3>Select an answer to begin</h3><p>The transcript and question-specific rubric will appear here.</p></div></div>
+          <div class="ai-tools"><div class="ai-action-row"><button id="ai-score-button" class="ai-score-button" type="button" disabled>AI Score</button><span id="ai-action-note" class="ai-action-note">Scoring runs only when you request it.</span></div><div id="ai-result" class="ai-result" aria-live="polite"></div></div>
+        </article>
+
+        <article class="panel scoring-panel">
+          <div class="panel-head scoring-head"><div><div class="eyebrow">YOUR REVIEW</div><h2>Score this answer</h2></div><span class="human-tag">Human judgment</span></div>
+          <form id="review-form" novalidate>
+            <fieldset id="score-fieldset" disabled>
+              <legend class="field-label">Score <span>Choose the best fit from the rubric</span></legend>
+              <div class="score-options" role="radiogroup" aria-label="Score from 1 to 4">
+                <label class="score-option"><input type="radio" name="score" value="1"><span class="score-num">1</span><span class="score-caption">Below bar</span></label>
+                <label class="score-option"><input type="radio" name="score" value="2"><span class="score-num">2</span><span class="score-caption">Developing</span></label>
+                <label class="score-option"><input type="radio" name="score" value="3"><span class="score-num">3</span><span class="score-caption">Meets bar</span></label>
+                <label class="score-option"><input type="radio" name="score" value="4"><span class="score-num">4</span><span class="score-caption">Strong</span></label>
+              </div>
+              <label class="field-label rationale-label" for="rationale">Rationale <span>Short note supporting your score</span></label>
+              <textarea id="rationale" rows="3" maxlength="500" placeholder="What evidence in the answer informed your score?"></textarea>
+              <div class="form-bottom"><span id="validation-message" class="validation-message" role="alert"></span><button class="primary-button" type="submit">Submit review <span aria-hidden="true">→</span></button></div>
+            </fieldset>
+          </form>
+          <div id="review-result" class="review-result" aria-live="polite"></div>
+        </article>
+      </section>
+    </section>
+
+    <footer class="page-footer"><span>Rules verify availability and input format. A person evaluates the answer.</span><span id="data-status">Loading local files…</span></footer>
+  </main>
+</body>
+</html>
